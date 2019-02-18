@@ -1,12 +1,12 @@
 require 'date'
 
 Gem::Specification.new do |s|
-  s.name        = 'airborne'
-  s.version     = '0.2.13'
+  s.name        = 'hops-airborne'
+  s.version     = '0.2.15'
   s.date        = Date.today.to_s
-  s.summary = 'RSpec driven API testing framework'
-  s.authors     = ['Alex Friedman', 'Seth Pollack']
-  s.email       = ['a.friedman07@gmail.com', 'seth@sethpollack.net']
+  s.summary     = 'RSpec driven API testing framework - LogicalClocks maintained fork'
+  s.authors     = ['Alex Friedman', 'Seth Pollack', 'Fabio Buso']
+  s.email       = ['fabio@logicalclocks.com']
   s.require_paths = ['lib']
   s.files = `git ls-files`.split("\n")
   s.license     = 'MIT'
