@@ -4,9 +4,11 @@ require 'airborne/request_expectations'
 require 'airborne/rest_client_requester'
 require 'airborne/rack_test_requester'
 require 'airborne/base'
+require 'openssl'
 
 RSpec.configure do |config|
   config.add_setting :base_url
+  config.add_setting :verify_ssl, default: OpenSSL::SSL::VERIFY_NONE
   config.add_setting :match_expected
   config.add_setting :match_actual
   config.add_setting :match_expected_default, default: true

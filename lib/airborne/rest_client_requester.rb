@@ -8,13 +8,15 @@ module Airborne
         begin
           request_body = options[:body].nil? ? '' : options[:body]
           request_body = request_body.to_json if options[:body].is_a?(Hash)
-          RestClient.send(method, get_url(url), request_body, headers)
+          RestClient::Request.execute(:method => method, :url => get_url(url), :payload => request_body, 
+                                      :headers => headers , :verify_ssl => Airborne.configuration.verify_ssl)
         rescue RestClient::Exception => e
           e.response
         end
       else
         begin
-          RestClient.send(method, get_url(url), headers)
+          RestClient::Request.execute(:method => method, :url => get_url(url), :headers => headers,
+                                      :verify_ssl => Airborne.configuration.verify_ssl)
         rescue RestClient::Exception => e
           e.response
         end
