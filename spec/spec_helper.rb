@@ -1,6 +1,6 @@
 require 'coveralls'
 Coveralls.wear!
-require 'airborne'
+require 'hops-airborne'
 require 'stub_helper'
 
 Airborne.configure do |config|

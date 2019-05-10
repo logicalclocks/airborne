@@ -17,11 +17,14 @@ RSpec.configure do |config|
   config.add_setting :rack_app
   config.add_setting :requester_type
   config.add_setting :requester_module
+  config.add_setting :timeout, default: 60
   config.before do |example|
     config.match_expected = example.metadata[:match_expected].nil? ?
       Airborne.configuration.match_expected_default? : example.metadata[:match_expected]
     config.match_actual = example.metadata[:match_actual].nil? ?
       Airborne.configuration.match_actual_default? : example.metadata[:match_actual]
+    config.timeout = example.metadata[:timeout].nil? ?
+      Airborne.configuration.timeout? : example.metadata[:timeout]
   end
 
   # Include last since it depends on the configuration already being added
