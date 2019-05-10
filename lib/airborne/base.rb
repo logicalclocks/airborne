@@ -29,32 +29,32 @@ module Airborne
     RSpec.configuration
   end
 
-  def get(url, headers = nil)
-    @response = make_request(:get, url, headers: headers)
+  def get(url, headers = nil, timeout = base_timeout)
+    @response = make_request(:get, url, headers: headers, timeout: timeout)
   end
 
-  def post(url, post_body = nil, headers = nil)
-    @response = make_request(:post, url, body: post_body, headers: headers)
+  def post(url, post_body = nil, headers = nil, timeout = base_timeout)
+    @response = make_request(:post, url, body: post_body, headers: headers, timeout: timeout)
   end
 
-  def patch(url, patch_body = nil, headers = nil)
-    @response = make_request(:patch, url, body: patch_body, headers: headers)
+  def patch(url, patch_body = nil, headers = nil, timeout = base_timeout)
+    @response = make_request(:patch, url, body: patch_body, headers: headers, timeout: timeout)
   end
 
-  def put(url, put_body = nil, headers = nil)
-    @response = make_request(:put, url, body: put_body, headers: headers)
+  def put(url, put_body = nil, headers = nil, timeout = base_timeout)
+    @response = make_request(:put, url, body: put_body, headers: headers, timeout: timeout)
   end
 
-  def delete(url, delete_body = nil, headers = nil)
-    @response = make_request(:delete, url, body: delete_body, headers: headers)
+  def delete(url, delete_body = nil, headers = nil, timeout = base_timeout)
+    @response = make_request(:delete, url, body: delete_body, headers: headers, timeout: timeout)
   end
 
-  def head(url, headers = nil)
-    @response = make_request(:head, url, headers: headers)
+  def head(url, headers = nil, timeout = base_timeout)
+    @response = make_request(:head, url, headers: headers, timeout: timeout)
   end
 
-  def options(url, headers = nil)
-    @response = make_request(:options, url, headers: headers)
+  def options(url, headers = nil, timeout = base_timeout)
+    @response = make_request(:options, url, headers: headers, timeout: timeout)
   end
 
   def response
@@ -78,5 +78,9 @@ module Airborne
   def get_url(url)
     base = Airborne.configuration.base_url || ''
     base + url
+  end
+
+  def base_timeout
+    Airborne.configuration.timeout || 60
   end
 end
